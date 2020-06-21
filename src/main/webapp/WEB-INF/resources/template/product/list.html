@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>商品列表</title>
+<script type="text/javascript" src="/maven-ssm/js/jquery-3.3.1.js"></script>
+</head>
+<body>
+	展示商品列表信息
+	<!-- <form id="product-form">
+		<input name="name">
+		<input name="price">
+		<input name="num">
+		<input name="tno" value="1">
+		<input type="button" value="新增" onclick="insert()">
+	</form> -->
+	<script type="text/javascript">
+		$.ajax({
+			url:"/maven-ssm/product",
+			type:"get",
+			dataType:"json",
+			success:function(data){
+				alert(data.message);
+			}
+		});
+		function insert(){
+			$.ajax({
+				url:"/ssm/product",
+				type:"POST",
+				data:$("#product-form").serialize(),
+				dataType:"json",
+				success:function(data){
+					alert(data.message);
+				}
+			});
+		}
+		/* $.ajax({
+			url:"/ssm/product",
+			type:"get",
+			dataType:"json",
+			success:function(data){
+				alert(data.message);
+			}
+		}); */
+		
+	</script>
+</body>
+</html>

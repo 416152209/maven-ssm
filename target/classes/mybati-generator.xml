@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+	<!--为插件提供数据库驱动包 -->
+	<classPathEntry
+		location="D://mysql-connector-java-5.1.41-bin.jar" />
+	<!--配置数据库连接信息 已经 反向工程的内容 -->
+	<context id="mysql:shoppingdb" targetRuntime="MyBatis3">
+		<commentGenerator>
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+		<!--连接数据库的信息 -->
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://localhost:3306/shoppingdb?useUnicode=true&amp;characterEncoding=utf-8"
+			userId="root" password="">
+		</jdbcConnection>
+		<!--配置反向工程生成的三部分内容 -->
+		<!--生成实体类 -->
+		<javaTypeResolver>
+			<!--禁止插件将数据库中的int类型定义为JAVA中的BigDecimal类型 -->
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+		<!--实体类生成配置 -->
+		<!--需要指定实体类文件生成到那个项目中 需要指定生成到这个项目的哪个包中 -->
+		<!-- targetPackage：生成的目标包 targetProject: 生成的目标项目 -->
+		<javaModelGenerator
+			targetPackage="com.woniu.web.entity" targetProject="maven-ssm/src/main/java">
+			<!--省略表的命名空间 -->
+			<property name="enableSubPackages" value="true" />
+			<!--去掉空格 -->
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+		<!--映射文件生成器 -->
+		<sqlMapGenerator targetPackage="mapper"
+			targetProject="maven-ssm/src/main/resources">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+		<!--查询接口生成器 -->
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="com.woniu.web.mapper" targetProject="maven-ssm/src/main/java">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+		<!--那些表需要进行反向工程 -->
+		<table tableName="PTYPE" domainObjectName="Type"></table>
+		<table tableName="PRODUCT" domainObjectName="Product"></table>
+	</context>
+</generatorConfiguration>
