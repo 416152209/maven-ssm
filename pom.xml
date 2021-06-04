@@ -15,7 +15,7 @@
 		<!--jackson包 -->
 		<jackson-version>2.9.8</jackson-version>
 		<!--hibernate参数校验包 -->
-		<hibernate-validator-version>6.0.0.Final</hibernate-validator-version>
+		<hibernate-validator-version>6.0.20.Final</hibernate-validator-version>
 		<!--fastjson包 -->
 		<fastjson-version>1.2.58</fastjson-version>
 		<!--jdbc驱动包 -->
